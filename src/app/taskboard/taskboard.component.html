@@ -1,0 +1,236 @@
+<h2>TaskBoard</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-md-2">
+      <div class="card">
+        <h4>To-do</h4>
+        <div class="card" *ngFor="let item of arr,let i= index">
+            <div class="card-body">{{item.description}}</div>
+            <div class="card-footer">
+              <p class='btn btn-primary'>Due_date:{{item.due_date}}</p>
+              <p class='btn btn-danger'>{{item.priority}}</p>
+              <p class='btn btn-warning' (click)=openEdit(content,i)>Edit</p>
+            </div>
+            <br>
+          </div>
+      </div>
+    </div>
+
+
+        <div class="col-sm-6 col-md-2">
+          <div class="card">
+            <h4>In-progress</h4>
+            <div class="card" *ngFor="let item of arr1,let i= index">
+                <div class="card-body">{{item.description}}</div>
+                <div class="card-footer">
+                  <p class='btn btn-primary'>Due_date:{{item.due_date}}</p>
+                  <p class='btn btn-danger'>{{item.priority}}</p>
+                  <p class='btn btn-warning' (click)=openEdit(content,i)>Edit</p>
+                </div>
+                <br>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-2">
+          <div class="card">
+            <h4>Ready_for_QA</h4>
+            <div class="card" *ngFor="let item of arr2,let i= index">
+                <div class="card-body">{{item.description}}</div>
+                <div class="card-footer">
+                  <p class='btn btn-primary'>Due_date:{{item.due_date}}</p>
+                  <p class='btn btn-danger'>{{item.priority}}</p>
+                  <p class='btn btn-warning' (click)=openEdit(content,i)>Edit</p>
+                </div>
+                <br>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-2">
+          <div class="card">
+            <h4>System_testing_start</h4>
+            <div class="card" *ngFor="let item of arr3,let i= index">
+                <div class="card-body">{{item.description}}</div>
+                <div class="card-footer">
+                  <p class='btn btn-primary'>Due_date:{{item.due_date}}</p>
+                  <p class='btn btn-danger'>{{item.priority}}</p>
+                  <p class='btn btn-warning' (click)=openEdit(content,i)>Edit</p>
+                </div>
+                <br>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-2">
+          <div class="card">
+            <h4>System_end</h4>
+            <div class="card" *ngFor="let item of arr4,let i= index">
+                <div class="card-body">{{item.description}}</div>
+                <div class="card-footer">
+                  <p class='btn btn-primary'>Due_date:{{item.due_date}}</p>
+                  <p class='btn btn-danger'>{{item.priority}}</p>
+                  <p class='btn btn-warning' (click)=openEdit(content,i)>Edit</p>
+                </div>
+                <br>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-2">
+          <div class="card">
+            <h4>Development_complete</h4>
+            <div class="card" *ngFor="let item of arr5,let i= index">
+                <div class="card-body">{{item.description}}</div>
+                <div class="card-footer">
+                  <p class='btn btn-primary'>Due_date:{{item.due_date}}</p>
+                  <p class='btn btn-danger'>{{item.priority}}</p>
+                  <p class='btn btn-warning' (click)=openEdit(content,i)>Edit</p>
+                </div>
+                <br>
+              </div>
+          </div>
+        </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+      <button type="button" class="btn btn-outline-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">Close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form #f="ngForm">
+              <div class="form-group">
+          <label for="task_id">Task ID</label>
+          <div class="input-group">
+            <input id="task_id" class="form-control" [(ngModel)]="task_id" class="form-control" placeholder="Task ID" name="task_id">
+            <div class="input-group-append">
+             </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="title">Title</label>
+          <div class="input-group">
+            <input id="title" class="form-control" [(ngModel)]="title" class="form-control" placeholder="Task title" name="title">
+            <div class="input-group-append">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="due_date">Due-Date</label>
+            <div class="input-group">
+              <input id="due_date" class="form-control" [(ngModel)]="due_date" class="form-control" placeholder="Task Due Date" name="due_date">
+              <div class="input-group-append">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group ">
+              <label for="description">Description</label>
+              <div class="input-group">
+                <input id="description" class="form-control" [(ngModel)]="description" class="form-control" placeholder="Task Description" name="description">
+                <div class="input-group-append">
+                </div>
+              </div>
+            </div>
+
+
+
+              <div class="row">
+                  <div class="form-group">
+                    <label>Priority</label><br>
+                    <select class="custom-select" [(ngModel)]="priority">
+                        <option selected>{{priority}}</option>
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                      </select>
+                      <!-- <div ng-controller="ExampleController">
+                        <form name="myForm">
+                          <label for="priority"> Priority: </label><br>
+                          <select name="priority" ng-model="priority">
+                            <option value="option-1">Option 1</option>
+                            <option value="option-2">Option 2</option>
+                            <input id="priority" class="form-control" [(ngModel)]="priority" class="form-control" placeholder="priority" name="priority">
+                          </select><br> -->
+                    </div>
+                  </div>
+                <!-- </form>
+                  </div> -->
+
+
+              <div class="form-group ">
+                  <label for="assign_to">Assign-To</label>
+                  <div class="input-group">
+                    <input id="assign_to" class="form-control" [(ngModel)]="assign_to" class="form-control" placeholder="Task Assign_to" name="assign_to">
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="assign_date">Assign-Date</label>
+                    <div class="input-group">
+                      <input id="assign_date" class="form-control" [(ngModel)]="assign_date" class="form-control" placeholder="Task Assign_date" name="assign_date">
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </div>
+
+                    <div class="form-group ">
+                        <label for="comments">Comments</label>
+                        <div class="input-group">
+                          <input id="comments" class="form-control" [(ngModel)]="comments" class="form-control" placeholder="Comments" name="comments">
+                          <div class="input-group-append">
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- <div class="row">
+                          <div class="form-group">
+                            <label>Status</label><br>
+                            <select class="custom-select" ng-model="status">
+                                <option selected>{{status}}</option>
+                                <option value="To-do">To-do</option>
+                                <option value="In-progress">In-progress</option>
+                                <option value="Ready_for_QA">Ready_for_QA</option>
+                                <option value="System_testing_start">System_testing_start</option>
+                                <option value="System_end">System_end</option>
+                                <option value="Development_complete">Development_complete</option>
+                              </select>
+                            </div>
+                          </div> -->
+
+                          <!--
+                        <div class="form-group ">
+                          <label for="status">Status</label>
+                          <div class="input-group">
+                            <input id="status" class="form-control" [(ngModel)]="status" class="form-control" placeholder="Status" name="status">
+                            <div class="input-group-append">
+                            </div>
+                          </div>
+                        </div> -->
+
+                        <select id="selectid" class="form-control-mb-12" (change)="modo($event.target.value)">
+                          <option value="To-do">To Do</option>
+                          <option value="In-progress">In Progress</option>
+                          <option value="Ready_for_QA">Development</option>
+                          <option value="System_testing_start">Ready for QA</option>
+                          <option value="System_end">Read for system testing</option>
+                          <option value="Development_complete">ST Completed</option>
+                       </select>
+
+
+
+     <div class="modal-footer">
+        <!-- <button type="submit" class="btn btn-outline-success" (click)='pushCard()'>push</button> -->
+        <button type="submit" class="btn btn-outline-success" (click)='UpdateItem()'>update</button>
+        <button type="reset" class="btn btn-outline-danger" aria-label="cancel" (click)="modal.dismiss('Cross click')">cancel</button>
+        </div>
+        </form>
+        </div>
+   </ng-template>
